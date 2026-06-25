@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>めざまし時計 – 無料のブラウザ目覚ましアプリ</title>
+
+  <!-- SEO -->
+  <meta name="description" content="インストール不要・完全無料のブラウザ目覚まし時計。スマホのホーム画面に追加してアプリとして使えます。複数アラーム・スヌーズ・音色選択に対応。" />
+  <meta name="keywords" content="目覚まし時計,アラーム,無料,ブラウザ,オンライン,スマホ,PWA,スヌーズ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mezamashi.example.com/" />
+
+  <!-- OGP -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="めざまし時計 – 無料のブラウザ目覚ましアプリ" />
+  <meta property="og:description" content="インストール不要・完全無料のブラウザ目覚まし時計。複数アラーム・スヌーズ・音色選択対応。" />
+  <meta property="og:url"         content="https://mezamashi.example.com/" />
+  <meta property="og:image"       content="https://mezamashi.example.com/ogp.png" />
+  <meta property="og:locale"      content="ja_JP" />
+  <meta property="og:site_name"   content="めざまし時計" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="めざまし時計 – 無料のブラウザ目覚ましアプリ" />
+  <meta name="twitter:description" content="インストール不要・完全無料のブラウザ目覚まし時計。" />
+  <meta name="twitter:image"       content="https://mezamashi.example.com/ogp.png" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#302b63" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="めざまし時計" />
+  <link rel="apple-touch-icon" href="icon-192.svg" />
+
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "めざまし時計",
+    "description": "インストール不要・完全無料のブラウザ目覚まし時計",
+    "url": "https://mezamashi.example.com/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg1: #0f0c29; --bg2: #302b63; --bg3: #24243e;
+      --accent: #4a90d9; --accent2: #7b5ea7;
+      --text: #ffffff; --text-sub: #a0b4d0; --text-dim: #6a7f9a;
+      --card-bg: rgba(255,255,255,0.07);
+      --card-border: rgba(255,255,255,0.12);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: -apple-system, 'Hiragino Sans', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: var(--text);
+      padding: 20px 16px calc(20px + var(--safe-bottom));
+      overflow-x: hidden;
+    }
+
+    /* ---- Clock ---- */
+    .clock-display {
+      font-size: clamp(3.5rem, 18vw, 6.5rem);
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 40px rgba(130,180,255,0.5);
+      margin: 24px 0 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .date-display {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      margin-bottom: 32px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ---- Card ---- */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 28px 24px;
+      width: min(440px, 100%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* ---- Time input ---- */
+    .time-input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 2rem;
+      font-weight: 300;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      color: var(--text);
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      transition: border-color .2s, box-shadow .2s;
+      font-variant-numeric: tabular-nums;
+    }
+    .time-input:focus {
+      border-color: rgba(74,144,217,0.7);
+      box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+    }
+
+    /* ---- Label input ---- */
+    .label-input {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--text);
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color .2s;
+    }
+    .label-input::placeholder { color: var(--text-dim); }
+    .label-input:focus { border-color: rgba(74,144,217,0.5); }
+
+    /* ---- Sound selector ---- */
+    .sound-label {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .sound-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .sound-btn {
+      padding: 8px 4px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--text-sub);
+      font-size: 0.7rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+      line-height: 1.4;
+      user-select: none;
+    }
+    .sound-btn .icon { font-size: 1.3rem; display: block; margin-bottom: 2px; }
+    .sound-btn:hover  { background: rgba(74,144,217,0.15); color: var(--text); }
+    .sound-btn.active {
+      background: rgba(74,144,217,0.25);
+      border-color: rgba(74,144,217,0.6);
+      color: #fff;
+    }
+    .sound-preview {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 16px;
+      transition: color .15s;
+    }
+    .sound-preview:hover { color: var(--text-sub); }
+
+    /* ---- Add button ---- */
+    .btn-add {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      cursor: pointer;
+      transition: opacity .2s, transform .1s;
+      letter-spacing: 0.03em;
+    }
+    .btn-add:hover  { opacity: 0.88; }
+    .btn-add:active { transform: scale(0.98); }
+
+    /* ---- Alarm list ---- */
+    .alarm-list {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .empty-msg {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.88rem;
+      padding: 20px 0 4px;
+    }
+
+    .alarm-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 12px 16px;
+      gap: 12px;
+      transition: background .2s;
+    }
+    .alarm-item.ringing {
+      border-color: rgba(255,175,60,0.8);
+      background: rgba(255,155,30,0.1);
+      animation: ring-pulse 0.9s ease-in-out infinite alternate;
+    }
+    @keyframes ring-pulse {
+      from { box-shadow: 0 0 0 0 rgba(255,155,30,0.3); }
+      to   { box-shadow: 0 0 0 10px rgba(255,155,30,0); }
+    }
+
+    .alarm-left { display: flex; flex-direction: column; gap: 2px; }
+    .alarm-time {
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .alarm-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .alarm-label { font-size: 0.8rem; color: var(--text-sub); }
+    .alarm-sound-tag {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 1px 6px;
+    }
+    .alarm-next { font-size: 0.72rem; color: var(--text-dim); }
+
+    .alarm-controls { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    /* Toggle */
+    .toggle { position: relative; width: 44px; height: 24px; cursor: pointer; flex-shrink: 0; }
+    .toggle input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.14);
+      border-radius: 12px;
+      transition: background .2s;
+    }
+    .toggle input:checked ~ .toggle-track {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      background: #fff; border-radius: 50%;
+      transition: transform .2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(20px); }
+
+    .btn-delete {
+      background: none; border: none;
+      color: var(--text-dim);
+      cursor: pointer; font-size: 1rem;
+      padding: 4px; border-radius: 6px;
+      transition: color .15s, background .15s;
+    }
+    .btn-delete:hover { color: #ff6b6b; background: rgba(255,80,80,0.1); }
+
+    /* ---- Ringing banner ---- */
+    .snooze-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, #e67e22, #c0392b);
+      color: #fff;
+      padding: 16px 20px;
+      z-index: 200;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: calc(16px + env(safe-area-inset-top, 0px));
+    }
+    .snooze-banner.show { display: flex; }
+    #bannerText { font-size: 1.1rem; font-weight: 600; }
+    .btn-snooze, .btn-stop {
+      padding: 8px 18px; border: none; border-radius: 20px;
+      font-weight: 600; cursor: pointer; font-size: 0.9rem;
+      transition: opacity .2s;
+    }
+    .btn-snooze { background: #fff; color: #c0392b; }
+    .btn-stop   { background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+    .btn-snooze:hover, .btn-stop:hover { opacity: 0.85; }
+
+    /* ---- Install prompt ---- */
+    .install-bar {
+      display: none;
+      width: min(440px, 100%);
+      margin-top: 16px;
+      background: rgba(74,144,217,0.12);
+      border: 1px solid rgba(74,144,217,0.3);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .install-bar.show { display: flex; }
+    .btn-install {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none; border-radius: 10px;
+      color: #fff; font-weight: 600;
+      padding: 8px 16px; cursor: pointer;
+      font-size: 0.85rem; white-space: nowrap;
+      transition: opacity .2s;
+    }
+    .btn-install:hover { opacity: 0.85; }
+
+    @media (prefers-color-scheme: light) {
+      /* ダークモード固定デザインのため変更なし */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock-display" id="clock">00:00:00</div>
+  <div class="date-display"  id="dateDisplay"></div>
+
+  <div class="card">
+    <div class="card-title">アラーム設定</div>
+
+    <input type="time" class="time-input" id="timeInput" />
+    <input type="text" class="label-input" id="labelInput" placeholder="ラベル（任意）" maxlength="30" />
+
+    <span class="sound-label">アラーム音</span>
+    <div class="sound-grid" id="soundGrid">
+      <button class="sound-btn active" data-sound="beep">
+        <span class="icon">🔔</span>ベーシック
+      </button>
+      <button class="sound-btn" data-sound="rise">
+        <span class="icon">🎵</span>上昇音
+      </button>
+      <button class="sound-btn" data-sound="digital">
+        <span class="icon">⚡</span>デジタル
+      </button>
+      <button class="sound-btn" data-sound="gentle">
+        <span class="icon">🌅</span>やさしい
+      </button>
+      <button class="sound-btn" data-sound="fanfare">
+        <span class="icon">📯</span>ファンファーレ
+      </button>
+    </div>
+    <button class="sound-preview" id="previewBtn">▶ 試聴</button>
+
+    <button class="btn-add" id="addBtn">＋ アラームを追加</button>
+
+    <div class="alarm-list" id="alarmList">
+      <div class="empty-msg" id="emptyMsg">アラームがありません</div>
+    </div>
+  </div>
+
+  <!-- PWAインストール促進バー -->
+  <div class="install-bar" id="installBar">
+    <span>📱 ホーム画面に追加してアプリとして使えます</span>
+    <button class="btn-install" id="installBtn">追加する</button>
+  </div>
+
+  <!-- 鳴動バナー -->
+  <div class="snooze-banner" id="snoozeBanner">
+    <span id="bannerText">⏰ アラーム！</span>
+    <button class="btn-snooze" id="snoozeBtn">5分スヌーズ</button>
+    <button class="btn-stop"   id="stopBtn">停止</button>
+  </div>
+
+  <script>
+    // =====================
+    //  Sounds (Web Audio API)
+    // =====================
+    const SOUNDS = {
+      beep: (ctx) => {
+        function b(freq, start, dur) {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sine';
+          o.frequency.setValueAtTime(freq, start);
+          g.gain.setValueAtTime(0.4, start);
+          g.gain.exponentialRampToValueAtTime(0.001, start + dur);
+          o.start(start); o.stop(start + dur);
+        }
+        const t = ctx.currentTime;
+        [0, 0.22, 0.44].forEach(d => { b(880, t+d, 0.18); b(1100, t+d+0.09, 0.12); });
+      },
+      rise: (ctx) => {
+        const notes = [523, 659, 784, 1047];
+        notes.forEach((freq, i) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'triangle';
+          const t = ctx.currentTime + i * 0.18;
+          o.frequency.setValueAtTime(freq, t);
+          g.gain.setValueAtTime(0.35, t);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+          o.start(t); o.stop(t + 0.3);
+        });
+      },
+      digital: (ctx) => {
+        function pulse(freq, start) {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'square';
+          o.frequency.setValueAtTime(freq, start);
+          g.gain.setValueAtTime(0.15, start);
+          g.gain.exponentialRampToValueAtTime(0.001, start + 0.08);
+          o.start(start); o.stop(start + 0.08);
+        }
+        const t = ctx.currentTime;
+        for (let i = 0; i < 6; i++) pulse(1400, t + i * 0.12);
+      },
+      gentle: (ctx) => {
+        function tone(freq, start, dur, vol = 0.25) {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sine';
+          o.frequency.setValueAtTime(freq, start);
+          g.gain.setValueAtTime(0, start);
+          g.gain.linearRampToValueAtTime(vol, start + 0.1);
+          g.gain.exponentialRampToValueAtTime(0.001, start + dur);
+          o.start(start); o.stop(start + dur);
+        }
+        const t = ctx.currentTime;
+        tone(528, t,      1.2, 0.2);
+        tone(660, t+0.4,  0.9, 0.18);
+        tone(792, t+0.8,  1.0, 0.15);
+      },
+      fanfare: (ctx) => {
+        const melody = [523,523,523,659,523,659,784];
+        const durs   = [0.12,0.12,0.12,0.3,0.12,0.12,0.4];
+        let pos = ctx.currentTime;
+        melody.forEach((freq, i) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sawtooth';
+          o.frequency.setValueAtTime(freq, pos);
+          g.gain.setValueAtTime(0.2, pos);
+          g.gain.exponentialRampToValueAtTime(0.001, pos + durs[i]);
+          o.start(pos); o.stop(pos + durs[i]);
+          pos += durs[i] + 0.03;
+        });
+      }
+    };
+
+    const SOUND_NAMES = { beep:'ベーシック', rise:'上昇音', digital:'デジタル', gentle:'やさしい', fanfare:'ファンファーレ' };
+
+    function playSound(type) {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      SOUNDS[type]?.(ctx);
+      return ctx;
+    }
+
+    // =====================
+    //  State
+    // =====================
+    let alarms = JSON.parse(localStorage.getItem('mezamashi_alarms') || '[]');
+    let selectedSound = 'beep';
+    let ringingId = null;
+    let ringingInterval = null;
+    let ringingCtx = null;
+    let deferredInstall = null;
+
+    // =====================
+    //  Clock
+    // =====================
+    function pad(n) { return String(n).padStart(2,'0'); }
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      const days = ['日','月','火','水','木','金','土'];
+      document.getElementById('dateDisplay').textContent =
+        `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日（${days[now.getDay()]}）`;
+    }
+
+    setInterval(() => { updateClock(); checkAlarms(); }, 1000);
+    updateClock();
+
+    // =====================
+    //  Alarm sound loop
+    // =====================
+    function startAlarmLoop(soundType) {
+      if (ringingInterval) return;
+      playSound(soundType);
+      const dur = soundType === 'fanfare' ? 2000 :
+                  soundType === 'gentle'  ? 1600 :
+                  soundType === 'rise'    ? 800  : 700;
+      ringingInterval = setInterval(() => { if (ringingCtx) { ringingCtx.close(); ringingCtx = null; } playSound(soundType); }, dur + 100);
+    }
+
+    function stopAlarmLoop() {
+      if (ringingInterval) { clearInterval(ringingInterval); ringingInterval = null; }
+      if (ringingCtx) { try { ringingCtx.close(); } catch(_){} ringingCtx = null; }
+    }
+
+    // =====================
+    //  Check alarms
+    // =====================
+    function checkAlarms() {
+      const now = new Date();
+      if (now.getSeconds() !== 0) return;
+      const hhmm = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      alarms.forEach(a => {
+        if (!a.enabled) return;
+        if (a.snoozedUntil) {
+          if (now >= new Date(a.snoozedUntil)) {
+            delete a.snoozedUntil;
+            saveAlarms();
+            triggerAlarm(a.id);
+          }
+          return;
+        }
+        if (a.time === hhmm) triggerAlarm(a.id);
+      });
+    }
+
+    function triggerAlarm(id) {
+      if (ringingId != null) return;
+      ringingId = id;
+      const a = alarms.find(x => x.id === id);
+      startAlarmLoop(a?.sound || 'beep');
+      document.getElementById('bannerText').textContent =
+        `⏰ ${a?.label || a?.time || 'アラーム！'}`;
+      document.getElementById('snoozeBanner').classList.add('show');
+      renderAlarms();
+    }
+
+    function stopAlarm() {
+      stopAlarmLoop();
+      document.getElementById('snoozeBanner').classList.remove('show');
+      ringingId = null;
+      renderAlarms();
+    }
+
+    document.getElementById('stopBtn').addEventListener('click', stopAlarm);
+    document.getElementById('snoozeBtn').addEventListener('click', () => {
+      if (ringingId == null) return;
+      const a = alarms.find(x => x.id === ringingId);
+      if (a) { a.snoozedUntil = new Date(Date.now() + 5*60*1000).toISOString(); saveAlarms(); }
+      stopAlarm();
+    });
+
+    // =====================
+    //  Sound selector
+    // =====================
+    document.getElementById('soundGrid').addEventListener('click', e => {
+      const btn = e.target.closest('.sound-btn');
+      if (!btn) return;
+      selectedSound = btn.dataset.sound;
+      document.querySelectorAll('.sound-btn').forEach(b => b.classList.toggle('active', b === btn));
+    });
+
+    document.getElementById('previewBtn').addEventListener('click', () => {
+      playSound(selectedSound);
+    });
+
+    // =====================
+    //  Add alarm
+    // =====================
+    document.getElementById('addBtn').addEventListener('click', () => {
+      const time  = document.getElementById('timeInput').value;
+      const label = document.getElementById('labelInput').value.trim();
+      if (!time) { alert('時刻を選んでください'); return; }
+      alarms.push({ id: Date.now(), time, label, sound: selectedSound, enabled: true });
+      saveAlarms(); renderAlarms();
+      document.getElementById('labelInput').value = '';
+    });
+
+    // =====================
+    //  Render
+    // =====================
+    function nextOccurrence(hhmm) {
+      const [h, m] = hhmm.split(':').map(Number);
+      const now = new Date();
+      const t = new Date(now); t.setHours(h, m, 0, 0);
+      if (t <= now) t.setDate(t.getDate() + 1);
+      const d = t - now;
+      const hrs = Math.floor(d / 3600000);
+      const min = Math.floor((d % 3600000) / 60000);
+      return hrs > 0 ? `約${hrs}時間${min}分後` : `約${min}分後`;
+    }
+
+    function escHtml(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderAlarms() {
+      const list = document.getElementById('alarmList');
+      list.innerHTML = '';
+      if (!alarms.length) {
+        list.innerHTML = '<div class="empty-msg">アラームがありません</div>';
+        return;
+      }
+      [...alarms].sort((a,b) => a.time.localeCompare(b.time)).forEach(a => {
+        const item = document.createElement('div');
+        item.className = 'alarm-item' + (ringingId === a.id ? ' ringing' : '');
+        item.dataset.id = a.id;
+        item.innerHTML = `
+          <div class="alarm-left">
+            <span class="alarm-time">${a.time}</span>
+            <div class="alarm-meta-row">
+              ${a.label ? `<span class="alarm-label">${escHtml(a.label)}</span>` : ''}
+              <span class="alarm-sound-tag">${SOUND_NAMES[a.sound] || a.sound}</span>
+            </div>
+            <span class="alarm-next">${a.enabled ? nextOccurrence(a.time) : '無効'}</span>
+          </div>
+          <div class="alarm-controls">
+            <label class="toggle">
+              <input type="checkbox" class="toggle-cb" data-id="${a.id}" ${a.enabled?'checked':''} />
+              <div class="toggle-track"></div>
+              <div class="toggle-thumb"></div>
+            </label>
+            <button class="btn-delete" data-id="${a.id}" aria-label="削除">✕</button>
+          </div>`;
+        list.appendChild(item);
+      });
+
+      list.querySelectorAll('.toggle-cb').forEach(cb => cb.addEventListener('change', e => {
+        const id = Number(e.target.dataset.id);
+        const a = alarms.find(x => x.id === id);
+        if (a) { a.enabled = e.target.checked; saveAlarms(); renderAlarms(); }
+      }));
+
+      list.querySelectorAll('.btn-delete').forEach(btn => btn.addEventListener('click', e => {
+        const id = Number(e.target.dataset.id);
+        alarms = alarms.filter(x => x.id !== id);
+        if (ringingId === id) stopAlarm();
+        saveAlarms(); renderAlarms();
+      }));
+    }
+
+    function saveAlarms() {
+      localStorage.setItem('mezamashi_alarms', JSON.stringify(alarms));
+    }
+
+    // =====================
+    //  Default time (now + 1min)
+    // =====================
+    const d0 = new Date(Date.now() + 60000);
+    document.getElementById('timeInput').value = `${pad(d0.getHours())}:${pad(d0.getMinutes())}`;
+
+    renderAlarms();
+
+    // =====================
+    //  PWA install
+    // =====================
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredInstall = e;
+      document.getElementById('installBar').classList.add('show');
+    });
+
+    document.getElementById('installBtn').addEventListener('click', async () => {
+      if (!deferredInstall) return;
+      deferredInstall.prompt();
+      const { outcome } = await deferredInstall.userChoice;
+      if (outcome === 'accepted') document.getElementById('installBar').classList.remove('show');
+      deferredInstall = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      document.getElementById('installBar').classList.remove('show');
+    });
+
+    // =====================
+    //  Service Worker
+    // =====================
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
