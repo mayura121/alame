@@ -356,6 +356,29 @@
     }
     .btn-install:hover { opacity: 0.85; }
 
+    /* ---- Site links ---- */
+    .site-links {
+      width: min(440px, 100%);
+      margin-top: 20px;
+      text-align: center;
+    }
+    .site-links a {
+      display: inline-block;
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      padding: 8px 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .site-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.25);
+    }
+
     @media (prefers-color-scheme: light) {
       /* ダークモード固定デザインのため変更なし */
     }
@@ -403,6 +426,11 @@
   <div class="install-bar" id="installBar">
     <span>📱 ホーム画面に追加してアプリとして使えます</span>
     <button class="btn-install" id="installBtn">追加する</button>
+  </div>
+
+  <!-- サイト内リンク -->
+  <div class="site-links">
+    <a href="/tea/">☕ 紅茶の部屋</a>
   </div>
 
   <!-- 鳴動バナー -->

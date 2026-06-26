@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>紅茶の部屋 – 紅茶アドバイザー＆マイスターのティーコラム</title>
+
+  <!-- SEO -->
+  <meta name="description" content="紅茶アドバイザー・紅茶マイスターによるティーコラム『紅茶の部屋』。おいしい紅茶のいれ方、茶葉の選び方、産地や銘柄の違いを、資格を持つプロがやさしく解説します。" />
+  <meta name="keywords" content="紅茶,ティー,いれ方,茶葉,ダージリン,アッサム,アールグレイ,紅茶アドバイザー,紅茶マイスター,ゴールデンルール" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alame.pages.dev/tea/" />
+
+  <!-- OGP -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="紅茶の部屋 – 紅茶アドバイザー＆マイスターのティーコラム" />
+  <meta property="og:description" content="資格を持つプロが、おいしい紅茶のいれ方や茶葉の選び方をやさしく解説するティーコラム。" />
+  <meta property="og:url"         content="https://alame.pages.dev/tea/" />
+  <meta property="og:image"       content="https://alame.pages.dev/ogp.png" />
+  <meta property="og:locale"      content="ja_JP" />
+  <meta property="og:site_name"   content="紅茶の部屋" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="紅茶の部屋 – ティーコラム" />
+  <meta name="twitter:description" content="資格を持つプロが紅茶の楽しみ方をやさしく解説。" />
+  <meta name="twitter:image"       content="https://alame.pages.dev/ogp.png" />
+
+  <meta name="theme-color" content="#3a2616" />
+  <link rel="apple-touch-icon" href="/icon-192.svg" />
+
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "紅茶の部屋",
+    "description": "紅茶アドバイザー・紅茶マイスターによるティーコラム",
+    "url": "https://alame.pages.dev/tea/",
+    "inLanguage": "ja",
+    "author": {
+      "@type": "Person",
+      "name": "紅茶の部屋 管理人",
+      "jobTitle": "紅茶アドバイザー・紅茶マイスター"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg1: #2b1a10; --bg2: #4a2f1a; --bg3: #3a2616;
+      --accent: #d99a4a; --accent2: #b5673a;
+      --text: #fdf6ee; --text-sub: #d8c3aa; --text-dim: #a8906f;
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: -apple-system, 'Hiragino Mincho ProN', 'Hiragino Sans', 'Segoe UI', serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-attachment: fixed;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text);
+      padding: 28px 16px calc(40px + var(--safe-bottom));
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    .wrap { width: min(620px, 100%); }
+
+    /* ---- Hero ---- */
+    .hero { text-align: center; margin-bottom: 28px; }
+    .hero .cup { font-size: 3.4rem; line-height: 1; filter: drop-shadow(0 6px 18px rgba(217,154,74,0.4)); }
+    .hero h1 {
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin: 12px 0 8px;
+      text-shadow: 0 0 30px rgba(217,154,74,0.35);
+    }
+    .hero p { color: var(--text-sub); font-size: 0.95rem; letter-spacing: 0.04em; }
+
+    /* ---- Card ---- */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 24px 22px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ---- Profile ---- */
+    .profile { display: flex; gap: 16px; align-items: flex-start; }
+    .profile .avatar {
+      flex-shrink: 0;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 16px rgba(181,103,58,0.4);
+    }
+    .profile-body p { font-size: 0.9rem; color: var(--text-sub); }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .badge {
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: rgba(217,154,74,0.12);
+      border: 1px solid rgba(217,154,74,0.3);
+      border-radius: 999px;
+      padding: 3px 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ---- Article list ---- */
+    .article-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 18px 20px;
+      transition: background .2s, border-color .2s, transform .1s;
+    }
+    .article-link + .article-link { margin-top: 12px; }
+    .article-link:hover {
+      background: rgba(217,154,74,0.1);
+      border-color: rgba(217,154,74,0.4);
+    }
+    .article-link:active { transform: scale(0.99); }
+    .article-meta { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.05em; margin-bottom: 6px; }
+    .article-title { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 6px; }
+    .article-excerpt { font-size: 0.85rem; color: var(--text-sub); }
+    .read-more { display: inline-block; margin-top: 10px; font-size: 0.8rem; color: var(--accent); }
+
+    /* ---- Footer ---- */
+    .foot {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .foot a { color: var(--text-sub); text-decoration: none; }
+    .foot a:hover { color: var(--accent); }
+    .divider { margin: 0 8px; opacity: 0.4; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="hero">
+      <div class="cup">☕</div>
+      <h1>紅茶の部屋</h1>
+      <p>資格を持つプロがやさしく綴る、ティーのある暮らし</p>
+    </div>
+
+    <!-- プロフィール -->
+    <div class="card">
+      <div class="section-title">📖 ごあいさつ</div>
+      <div class="profile">
+        <div class="avatar">🫖</div>
+        <div class="profile-body">
+          <p>ようこそ「紅茶の部屋」へ。紅茶アドバイザー・紅茶マイスターの資格を持つ管理人が、毎日の一杯がちょっと豊かになるヒントを綴っていきます。むずかしい作法より、まずは「おいしい」を気軽に。</p>
+          <div class="badges">
+            <span class="badge">🏅 紅茶アドバイザー</span>
+            <span class="badge">🏅 紅茶マイスター</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事一覧 -->
+    <div class="card">
+      <div class="section-title">📝 記事一覧</div>
+
+      <a class="article-link" href="/tea/golden-rule.html">
+        <div class="article-meta">2026.06.26 ・ 基本のいれ方</div>
+        <div class="article-title">プロが教える、おいしい紅茶のいれ方 ― ゴールデンルール5箇条</div>
+        <div class="article-excerpt">いつもの茶葉が見違えるほどおいしくなる。プロが守っている「ゴールデンルール」を、家庭で再現できる形にかみくだいて解説します。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+    </div>
+
+    <div class="foot">
+      <a href="/tea/">紅茶の部屋</a>
+      <span class="divider">|</span>
+      <a href="/">めざまし時計</a>
+    </div>
+
+  </div>
+</body>
+</html>
