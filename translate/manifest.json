@@ -1,0 +1,17 @@
+{
+  "name": "VoiceBridge – リアルタイム音声翻訳・通訳",
+  "short_name": "VoiceBridge",
+  "description": "話すだけで相手の言語に翻訳・読み上げ。交流会・配信・通話でそのまま使える通訳ツール。",
+  "start_url": "/translate/",
+  "scope": "/translate/",
+  "display": "standalone",
+  "background_color": "#04111a",
+  "theme_color": "#0f766e",
+  "orientation": "portrait-primary",
+  "lang": "ja",
+  "icons": [
+    { "src": "icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "categories": ["productivity", "utilities", "social"]
+}
