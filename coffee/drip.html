@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ハンドドリップの基本 ― 家で楽しむ本格コーヒー | コーヒーの部屋</title>
+  <meta name="description" content="ハンドドリップコーヒーの基本を解説。蒸らし・お湯の温度・注ぎ方のコツを知るだけで、家の一杯がカフェクオリティに近づきます。" />
+  <meta name="keywords" content="ハンドドリップ,コーヒー,いれ方,蒸らし,ドリッパー,ペーパードリップ,家コーヒー" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alame.pages.dev/coffee/drip.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="ハンドドリップの基本 ― 家で楽しむ本格コーヒー" />
+  <meta property="og:description" content="蒸らし・温度・注ぎ方のコツで家の一杯がカフェクオリティに。" />
+  <meta property="og:url" content="https://alame.pages.dev/coffee/drip.html" />
+  <meta property="og:image" content="https://alame.pages.dev/ogp.png" />
+  <meta property="og:site_name" content="コーヒーの部屋" />
+  <meta name="theme-color" content="#241a0d" />
+  <link rel="apple-touch-icon" href="/icon-192.svg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ハンドドリップの基本 ― 家で楽しむ本格コーヒー","datePublished":"2026-06-27","inLanguage":"ja","author":{"@type":"Person","name":"コーヒーの部屋 管理人"},"publisher":{"@type":"Organization","name":"コーヒーの部屋"}}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg1: #130f08; --bg2: #241a0d; --bg3: #1b1209;
+      --accent: #c8833a; --accent2: #7a4020;
+      --text: #fdf6ee; --text-sub: #dcc4a8; --text-dim: #a8866a;
+      --card-bg: rgba(255,255,255,0.06); --card-border: rgba(255,255,255,0.11);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    body { font-family: -apple-system,'Hiragino Sans','Segoe UI',sans-serif; background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3)); background-attachment: fixed; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; color: var(--text); padding: 24px 16px calc(40px + var(--safe-bottom)); overflow-x: hidden; line-height: 1.9; letter-spacing: 0.01em; }
+    .wrap { width: min(640px, 100%); }
+    .crumb { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 18px; }
+    .crumb a { color: var(--text-sub); text-decoration: none; }
+    .crumb a:hover { color: var(--accent); }
+    .crumb span { margin: 0 6px; opacity: 0.5; }
+    .article-head { margin-bottom: 24px; }
+    .article-head .meta { font-size: 0.74rem; color: var(--text-dim); letter-spacing: 0.06em; margin-bottom: 10px; }
+    .article-head h1 { font-size: clamp(1.5rem,6vw,2.1rem); font-weight: 700; line-height: 1.5; letter-spacing: 0.02em; text-shadow: 0 0 30px rgba(200,131,58,0.35); }
+    .card { background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 22px; padding: 28px 24px; box-shadow: 0 18px 50px rgba(0,0,0,0.5); }
+    .lead { font-size: 1rem; color: var(--text-sub); border-left: 3px solid var(--accent); padding-left: 14px; margin-bottom: 28px; }
+    .card h2 { font-size: 1.2rem; font-weight: 600; margin: 30px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(200,131,58,0.25); }
+    .card h2 .num { display: inline-block; min-width: 1.7em; color: var(--accent); font-weight: 700; }
+    .card p { font-size: 0.95rem; margin-bottom: 14px; }
+    .card strong { color: #fff; font-weight: 600; }
+    .card em { color: var(--accent); font-style: normal; font-weight: 600; }
+    .tip { background: rgba(200,131,58,0.1); border: 1px solid rgba(200,131,58,0.25); border-radius: 14px; padding: 14px 16px; font-size: 0.88rem; color: var(--text-sub); margin: 18px 0; }
+    .tip b { color: var(--accent); }
+    .recipe { background: rgba(200,131,58,0.07); border: 1px solid rgba(200,131,58,0.2); border-radius: 16px; padding: 18px 20px; margin: 18px 0; }
+    .recipe h3 { font-size: 0.95rem; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+    .recipe ol { padding-left: 18px; }
+    .recipe ol li { font-size: 0.9rem; color: var(--text-sub); padding: 5px 0; }
+    .summary { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+    .summary ul { list-style: none; }
+    .summary li { font-size: 0.92rem; padding: 8px 0 8px 28px; position: relative; color: var(--text-sub); }
+    .summary li::before { content: '☕'; position: absolute; left: 0; top: 8px; font-size: 0.9rem; }
+    .nav-foot { margin-top: 22px; text-align: center; }
+    .btn-back { display: inline-block; text-decoration: none; color: var(--accent); border: 1px solid rgba(200,131,58,0.4); border-radius: 999px; padding: 10px 22px; font-size: 0.88rem; transition: background .2s; }
+    .btn-back:hover { background: rgba(200,131,58,0.12); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="crumb"><a href="/coffee/">コーヒーの部屋</a><span>›</span>ハンドドリップの基本</nav>
+    <header class="article-head">
+      <div class="meta">2026.06.27 ・ 家コーヒー</div>
+      <h1>ハンドドリップの基本<br>― 家で楽しむ本格コーヒー</h1>
+    </header>
+    <article class="card">
+      <p class="lead">ドリッパーとペーパーフィルター、細口のケトル。この3つがあれば、家でカフェ品質のコーヒーが楽しめます。難しそうに見えて、コツをおさえれば誰でもすぐ再現できます。</p>
+
+      <h2><span class="num">1.</span>必要な道具</h2>
+      <p>まず揃えたいのは<strong>ドリッパー・ペーパーフィルター・ドリップポット（細口ケトル）・サーバー</strong>の4点です。ドリッパーの形状は円錐型（ハリオV60など）と台形型（メリタ・カリタなど）があり、円錐型は抽出速度が速くすっきり、台形型は安定した濃さが出やすいです。初心者には台形型が扱いやすいでしょう。</p>
+      <div class="tip"><b>細口ケトルが重要な理由：</b> お湯の量と速度を細かくコントロールできるのが細口ケトルの強み。普通のやかんでは注ぎすぎてしまい、味が安定しません。専用ケトルは1,500円〜から手に入ります。</div>
+
+      <h2><span class="num">2.</span>豆の量とお湯の温度</h2>
+      <p>基本の比率は<em>コーヒー粉10g：お湯150〜160ml</em>（1杯分）。2杯なら粉18〜20gでOKです。お湯の温度は<strong>90〜93℃</strong>が目安。沸騰したらポットに移すか1〜2分おくと適温になります。温度が高すぎると雑味が出やすく、低すぎると薄くなります。</p>
+
+      <h2><span class="num">3.</span>蒸らしが一番大事</h2>
+      <p>粉全体が湿る程度の少量のお湯（粉の2倍量が目安）を最初にかけ、<em>30秒待つ（蒸らし）</em>。これが最も重要なステップです。蒸らしによって粉のガスが抜け、その後のお湯が均一に浸透します。蒸らしが足りないと、お湯が粉の一部を素通りして味が薄くなります。</p>
+
+      <h2><span class="num">4.</span>注ぎ方の基本</h2>
+      <div class="recipe">
+        <h3>☕ 基本のドリップ手順（1杯分・粉10g）</h3>
+        <ol>
+          <li>フィルターをドリッパーにセットし、お湯で湿らせてからサーバーのお湯を捨てる（紙の臭み消し）。</li>
+          <li>粉を平らに入れ、中心に少量のお湯を静かに注ぎ、30秒蒸らす。</li>
+          <li>中心から小さな円を描くようにゆっくりと、全体に均一にお湯を注ぐ。</li>
+          <li>150〜160mlになったらドリッパーを外す（落ちきるまで待たない）。</li>
+        </ol>
+      </div>
+      <div class="tip"><b>「の」の字で注ぐ：</b> 外側から内側へ「の」の字を描くように注ぐのが定番。ドリッパーの端に直接お湯が当たるとフィルターを伝って薄まるので、粉の上だけに落とすイメージで。</div>
+
+      <h2><span class="num">5.</span>グラインダーで豆から挽くと別次元においしい</h2>
+      <p>粉よりも<strong>豆から挽きたてを使う</strong>と香りと味が格段に上がります。コーヒーは挽いた瞬間から酸化が始まり、香りが抜けていきます。手動グラインダーは1,500〜3,000円から手に入り、挽く時間も楽しみのひとつです。</p>
+
+      <div class="summary">
+        <p><strong>今日のまとめ</strong></p>
+        <ul>
+          <li>道具はドリッパー・細口ケトル・ペーパーフィルターの3点から</li>
+          <li>粉10g：お湯150ml、温度90〜93℃が基本比率</li>
+          <li>蒸らし30秒が最も重要なステップ</li>
+          <li>「の」の字で中心から均一にゆっくり注ぐ</li>
+          <li>豆から挽きたてを使うと香りが別次元</li>
+        </ul>
+      </div>
+    </article>
+    <div class="nav-foot"><a class="btn-back" href="/coffee/">← コーヒーの部屋にもどる</a></div>
+  </div>
+</body>
+</html>

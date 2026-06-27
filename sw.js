@@ -1,10 +1,14 @@
-const CACHE = 'mezamashi-v3';
+const CACHE = 'mezamashi-v4';
 const ASSETS = [
   '/', '/index.html', '/manifest.json', '/icon-192.svg', '/icon-512.svg',
   '/tea/', '/tea/golden-rule.html',
   '/tea/darjeeling.html', '/tea/milk-tea.html', '/tea/iced-tea.html',
   '/tea/tea-leaves-type.html', '/tea/teapot-choice.html', '/tea/afternoon-tea.html',
-  '/tea/chai.html', '/tea/storage.html', '/tea/health.html', '/tea/food-pairing.html'
+  '/tea/chai.html', '/tea/storage.html', '/tea/health.html', '/tea/food-pairing.html',
+  '/coffee/', '/coffee/drip.html', '/coffee/camp-percolator.html',
+  '/coffee/camp-drip.html', '/coffee/moka-pot.html', '/coffee/french-press.html',
+  '/coffee/coffee-maker.html', '/coffee/beans.html', '/coffee/roast.html',
+  '/coffee/cold-brew.html', '/coffee/latte.html'
 ];
 
 self.addEventListener('install', e => {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>パーコレーターで作るキャンプコーヒー ― 焚き火の傍らで | コーヒーの部屋</title>
+  <meta name="description" content="キャンプの定番コーヒー器具パーコレーターの使い方を解説。焚き火・ガスバーナーでの直火抽出のコツと、豆の選び方・火加減の目安も紹介。" />
+  <meta name="keywords" content="パーコレーター,キャンプコーヒー,直火,焚き火,アウトドアコーヒー,使い方,レシピ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alame.pages.dev/coffee/camp-percolator.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="パーコレーターで作るキャンプコーヒー ― 焚き火の傍らで" />
+  <meta property="og:description" content="直火でぐつぐつ煮出すパーコレーターの使い方とコツを解説。" />
+  <meta property="og:url" content="https://alame.pages.dev/coffee/camp-percolator.html" />
+  <meta property="og:image" content="https://alame.pages.dev/ogp.png" />
+  <meta property="og:site_name" content="コーヒーの部屋" />
+  <meta name="theme-color" content="#241a0d" />
+  <link rel="apple-touch-icon" href="/icon-192.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg1:#130f08;--bg2:#241a0d;--bg3:#1b1209;--accent:#c8833a;--accent2:#7a4020;--text:#fdf6ee;--text-sub:#dcc4a8;--text-dim:#a8866a;--card-bg:rgba(255,255,255,0.06);--card-border:rgba(255,255,255,0.11);--safe-bottom:env(safe-area-inset-bottom,0px); }
+    body { font-family:-apple-system,'Hiragino Sans','Segoe UI',sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));background-attachment:fixed;min-height:100dvh;display:flex;flex-direction:column;align-items:center;color:var(--text);padding:24px 16px calc(40px + var(--safe-bottom));overflow-x:hidden;line-height:1.9;letter-spacing:0.01em; }
+    .wrap { width:min(640px,100%); }
+    .crumb { font-size:0.78rem;color:var(--text-dim);margin-bottom:18px; }
+    .crumb a { color:var(--text-sub);text-decoration:none; }
+    .crumb a:hover { color:var(--accent); }
+    .crumb span { margin:0 6px;opacity:0.5; }
+    .article-head { margin-bottom:24px; }
+    .article-head .meta { font-size:0.74rem;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:10px; }
+    .article-head h1 { font-size:clamp(1.5rem,6vw,2.1rem);font-weight:700;line-height:1.5;letter-spacing:0.02em;text-shadow:0 0 30px rgba(200,131,58,0.35); }
+    .card { background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--card-border);border-radius:22px;padding:28px 24px;box-shadow:0 18px 50px rgba(0,0,0,0.5); }
+    .lead { font-size:1rem;color:var(--text-sub);border-left:3px solid var(--accent);padding-left:14px;margin-bottom:28px; }
+    .card h2 { font-size:1.2rem;font-weight:600;margin:30px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(200,131,58,0.25); }
+    .card h2 .num { display:inline-block;min-width:1.7em;color:var(--accent);font-weight:700; }
+    .card p { font-size:0.95rem;margin-bottom:14px; }
+    .card strong { color:#fff;font-weight:600; }
+    .card em { color:var(--accent);font-style:normal;font-weight:600; }
+    .tip { background:rgba(200,131,58,0.1);border:1px solid rgba(200,131,58,0.25);border-radius:14px;padding:14px 16px;font-size:0.88rem;color:var(--text-sub);margin:18px 0; }
+    .tip b { color:var(--accent); }
+    .recipe { background:rgba(200,131,58,0.07);border:1px solid rgba(200,131,58,0.2);border-radius:16px;padding:18px 20px;margin:18px 0; }
+    .recipe h3 { font-size:0.95rem;color:var(--accent);font-weight:600;margin-bottom:10px; }
+    .recipe ol { padding-left:18px; }
+    .recipe ol li { font-size:0.9rem;color:var(--text-sub);padding:5px 0; }
+    .recipe ul { list-style:none; }
+    .recipe ul li { font-size:0.9rem;color:var(--text-sub);padding:4px 0 4px 16px;position:relative; }
+    .recipe ul li::before { content:'・';position:absolute;left:0;color:var(--accent); }
+    .summary { margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12); }
+    .summary ul { list-style:none; }
+    .summary li { font-size:0.92rem;padding:8px 0 8px 28px;position:relative;color:var(--text-sub); }
+    .summary li::before { content:'☕';position:absolute;left:0;top:8px;font-size:0.9rem; }
+    .nav-foot { margin-top:22px;text-align:center; }
+    .btn-back { display:inline-block;text-decoration:none;color:var(--accent);border:1px solid rgba(200,131,58,0.4);border-radius:999px;padding:10px 22px;font-size:0.88rem;transition:background .2s; }
+    .btn-back:hover { background:rgba(200,131,58,0.12); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="crumb"><a href="/coffee/">コーヒーの部屋</a><span>›</span>パーコレーターキャンプコーヒー</nav>
+    <header class="article-head">
+      <div class="meta">2026.06.27 ・ キャンプコーヒー</div>
+      <h1>パーコレーターで作るキャンプコーヒー<br>― 焚き火の傍らで</h1>
+    </header>
+    <article class="card">
+      <p class="lead">焚き火にかけたパーコレーターからコーヒーの香りが漂ってくる。それだけでキャンプの朝が完成します。見た目も豪快で、キャンプ映えする道具の代表格です。</p>
+
+      <h2><span class="num">1.</span>パーコレーターとは</h2>
+      <p>パーコレーターは、本体下部の水が熱せられて上部のコーヒー粉に繰り返し循環し、抽出する仕組みの直火式コーヒー器具です。フィルター不要で豪快に作れることから、<strong>キャンプコーヒーの定番</strong>として長く愛されています。金属製で丈夫なため、アウトドアでの扱いに向いています。</p>
+      <p>仕上がりはやや濃いめでコクがあり、エグみが出やすいという特徴もあります。ポイントは<em>火加減と時間</em>です。</p>
+
+      <h2><span class="num">2.</span>使い方の基本</h2>
+      <div class="recipe">
+        <h3>🔥 パーコレーター（4〜6カップ分）</h3>
+        <ul>
+          <li>粗めに挽いたコーヒー粉 … 大さじ4〜5杯（約40〜50g）</li>
+          <li>水 … 600〜800ml（MAX線まで）</li>
+        </ul>
+        <ol>
+          <li>本体に水を入れ、バスケット（粉を入れるかご）をセットする。</li>
+          <li>バスケットに粗挽きの粉を入れ、ふたをして火にかける。</li>
+          <li>沸騰してコーヒーがガラス蓋の覗き窓に見え始めたら<strong>弱火</strong>に落とす。</li>
+          <li>弱火で4〜6分キープ。色が濃くなりすぎる前に火から下ろす。</li>
+          <li>粉が落ち着くまで1〜2分待ってから注ぐ。</li>
+        </ol>
+      </div>
+
+      <h2><span class="num">3.</span>おいしく仕上げる3つのコツ</h2>
+      <p><strong>① 粗挽きを使う：</strong> パーコレーターは長時間循環するため、細かい粉だと雑味や苦みが強くなりすぎます。<em>粗挽き（フレンチプレス用の粗さ）</em>が最適です。</p>
+      <p><strong>② 強火にしない：</strong> 沸騰したら必ず弱火へ。グラグラ煮続けると過抽出になって苦みが突出します。チラチラとゆっくり循環しているくらいの弱火がベストです。</p>
+      <p><strong>③ 時間をかけすぎない：</strong> 4〜6分が目安。長くなるほど苦みと雑味が増します。最初は4分から試してみてください。</p>
+
+      <div class="tip"><b>焚き火で使う場合：</b> 直火の安定した熾火（おきび）の上に置くのが理想。炎が高いと温度が上がりすぎます。五徳やトライポッドを使って火から少し離して置くとコントロールしやすいです。</div>
+
+      <h2><span class="num">4.</span>パーコレーターに向く豆</h2>
+      <p>やや苦みの強い<strong>深煎り（フレンチロースト・イタリアンロースト）</strong>が向いています。濃い抽出になりやすいパーコレーターでは、深煎りのコクと苦みのバランスが出やすく、ブラックで飲んでもしっかりした味わいになります。焚き火の香りとも相性抜群です。</p>
+
+      <div class="summary">
+        <p><strong>今日のまとめ</strong></p>
+        <ul>
+          <li>粗挽きの粉を使い、沸騰後は弱火で4〜6分が基本</li>
+          <li>強火・長時間は苦みと雑味の原因になるので避ける</li>
+          <li>焚き火では安定した熾火の上・高い炎から距離を取る</li>
+          <li>深煎り豆との相性が特によく、ブラックで楽しむのが映える</li>
+        </ul>
+      </div>
+    </article>
+    <div class="nav-foot"><a class="btn-back" href="/coffee/">← コーヒーの部屋にもどる</a></div>
+  </div>
+</body>
+</html>
