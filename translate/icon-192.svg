@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b2230"/>
+      <stop offset="100%" style="stop-color:#04111a"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="38" fill="url(#bg)"/>
+  <rect x="29" y="56" width="68" height="53" rx="13" fill="url(#ac)"/>
+  <path d="M45 106 L45 124 L61 109 Z" fill="#2dd4bf"/>
+  <text x="63" y="93" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#04111a" text-anchor="middle">A</text>
+  <rect x="95" y="83" width="68" height="53" rx="13" fill="#6366f1"/>
+  <path d="M147 133 L147 151 L131 136 Z" fill="#6366f1"/>
+  <text x="129" y="120" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="37" font-weight="700" fill="#f5f6ff" text-anchor="middle">あ</text>
+</svg>
