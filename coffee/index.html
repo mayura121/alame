@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>コーヒーの部屋 ― キャンプ・家・コーヒーメーカーのコラム</title>
+
+  <meta name="description" content="キャンプコーヒーから家でのハンドドリップ、コーヒーメーカー比較まで。コーヒーのある暮らしをもっと豊かにするコラム『コーヒーの部屋』。" />
+  <meta name="keywords" content="コーヒー,ハンドドリップ,キャンプコーヒー,コーヒーメーカー,フレンチプレス,モカポット,パーコレーター,コールドブリュー" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alame.pages.dev/coffee/" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="コーヒーの部屋 ― キャンプ・家・コーヒーメーカーのコラム" />
+  <meta property="og:description" content="キャンプコーヒーから家でのハンドドリップ、コーヒーメーカー比較まで。" />
+  <meta property="og:url"         content="https://alame.pages.dev/coffee/" />
+  <meta property="og:image"       content="https://alame.pages.dev/ogp.png" />
+  <meta property="og:locale"      content="ja_JP" />
+  <meta property="og:site_name"   content="コーヒーの部屋" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="コーヒーの部屋" />
+  <meta name="twitter:description" content="キャンプ・家・コーヒーメーカーのコーヒーコラム。" />
+  <meta name="twitter:image"       content="https://alame.pages.dev/ogp.png" />
+
+  <meta name="theme-color" content="#241a0d" />
+  <link rel="apple-touch-icon" href="/icon-192.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "コーヒーの部屋",
+    "description": "キャンプコーヒーから家コーヒー、コーヒーメーカー比較まで。",
+    "url": "https://alame.pages.dev/coffee/",
+    "inLanguage": "ja"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg1: #130f08; --bg2: #241a0d; --bg3: #1b1209;
+      --accent: #c8833a; --accent2: #7a4020;
+      --text: #fdf6ee; --text-sub: #dcc4a8; --text-dim: #a8866a;
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.11);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family: -apple-system, 'Hiragino Sans', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-attachment: fixed;
+      min-height: 100dvh;
+      display: flex; flex-direction: column; align-items: center;
+      color: var(--text);
+      padding: 28px 16px calc(40px + var(--safe-bottom));
+      overflow-x: hidden; line-height: 1.8;
+    }
+
+    .wrap { width: min(620px, 100%); }
+
+    .hero { text-align: center; margin-bottom: 28px; }
+    .hero .cup { font-size: 3.4rem; line-height: 1; filter: drop-shadow(0 6px 18px rgba(200,131,58,0.4)); }
+    .hero h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); font-weight: 700; letter-spacing: 0.06em; margin: 12px 0 8px; text-shadow: 0 0 30px rgba(200,131,58,0.4); }
+    .hero p { color: var(--text-sub); font-size: 0.95rem; letter-spacing: 0.04em; }
+
+    .card { background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 22px; padding: 24px 22px; box-shadow: 0 18px 50px rgba(0,0,0,0.5); margin-bottom: 20px; }
+    .section-title { font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+    .article-link { display: block; text-decoration: none; color: inherit; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 18px 20px; transition: background .2s, border-color .2s, transform .1s; }
+    .article-link + .article-link { margin-top: 12px; }
+    .article-link:hover { background: rgba(200,131,58,0.1); border-color: rgba(200,131,58,0.4); }
+    .article-link:active { transform: scale(0.99); }
+    .article-meta { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.05em; margin-bottom: 6px; }
+    .article-title { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 6px; }
+    .article-excerpt { font-size: 0.85rem; color: var(--text-sub); }
+    .read-more { display: inline-block; margin-top: 10px; font-size: 0.8rem; color: var(--accent); }
+
+    .foot { text-align: center; margin-top: 8px; font-size: 0.78rem; color: var(--text-dim); }
+    .foot a { color: var(--text-sub); text-decoration: none; }
+    .foot a:hover { color: var(--accent); }
+    .divider { margin: 0 8px; opacity: 0.4; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="hero">
+      <div class="cup">☕</div>
+      <h1>コーヒーの部屋</h1>
+      <p>キャンプの焚き火から、家の朝の一杯まで</p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📝 記事一覧</div>
+
+      <a class="article-link" href="/coffee/drip.html">
+        <div class="article-meta">2026.06.27 ・ 家コーヒー</div>
+        <div class="article-title">ハンドドリップの基本 ― 家で楽しむ本格コーヒー</div>
+        <div class="article-excerpt">ドリッパーとお湯さえあれば始められる。蒸らし・注ぎ方・お湯の温度など、毎日の一杯をおいしくするポイントを解説。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/camp-percolator.html">
+        <div class="article-meta">2026.06.27 ・ キャンプコーヒー</div>
+        <div class="article-title">パーコレーターで作るキャンプコーヒー ― 焚き火の傍らで</div>
+        <div class="article-excerpt">直火にかけてぐつぐつ煮出す豪快さが魅力。パーコレーターの使い方と、おいしく仕上げるコツを紹介。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/camp-drip.html">
+        <div class="article-meta">2026.06.27 ・ キャンプコーヒー</div>
+        <div class="article-title">キャンプでハンドドリップ ― アウトドアで一杯の贅沢</div>
+        <div class="article-excerpt">山頂や川辺で飲む一杯は格別。必要な道具・お湯の温め方・風の中でのドリップのコツを丁寧に解説。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/moka-pot.html">
+        <div class="article-meta">2026.06.27 ・ キャンプ・家コーヒー</div>
+        <div class="article-title">モカポットの使い方 ― 直火で作るイタリア式エスプレッソ</div>
+        <div class="article-excerpt">コンロ一つで本格エスプレッソが楽しめるビアレッティ式。使い方・手入れ・アレンジレシピまで。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/french-press.html">
+        <div class="article-meta">2026.06.27 ・ 家コーヒー</div>
+        <div class="article-title">フレンチプレスの使い方 ― 豆の旨みをまるごと味わう</div>
+        <div class="article-excerpt">フィルター不要・豆の油分ごと抽出する濃厚な一杯。時間の管理だけで誰でもおいしく作れます。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/coffee-maker.html">
+        <div class="article-meta">2026.06.27 ・ 製品比較</div>
+        <div class="article-title">コーヒーメーカー比較 ― 全自動・ドリップ・カプセル式の選び方</div>
+        <div class="article-excerpt">種類が多くて迷いがちなコーヒーメーカー。生活スタイル別におすすめの選び方と主要機種の特徴を解説。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/beans.html">
+        <div class="article-meta">2026.06.27 ・ 豆の知識</div>
+        <div class="article-title">コーヒー豆の種類と産地 ― 自分好みの一杯を見つける</div>
+        <div class="article-excerpt">ブラジル・エチオピア・コロンビア…産地で味が変わる理由と、アラビカ種・ロブスタ種の違いをわかりやすく解説。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/roast.html">
+        <div class="article-meta">2026.06.27 ・ 豆の知識</div>
+        <div class="article-title">焙煎度の違いを知る ― 浅煎り・中煎り・深煎りの選び方</div>
+        <div class="article-excerpt">同じ豆でも焙煎で味が激変する。酸味・苦み・コクの関係と、飲み方別のおすすめ焙煎度を紹介。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/cold-brew.html">
+        <div class="article-meta">2026.06.27 ・ 家コーヒー</div>
+        <div class="article-title">水出しコールドブリューの作り方 ― なめらかな夏の一杯</div>
+        <div class="article-excerpt">低温でじっくり抽出するコールドブリューは苦みが少なくまろやか。前夜に仕込むだけで翌朝完成します。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+      <a class="article-link" href="/coffee/latte.html">
+        <div class="article-meta">2026.06.27 ・ アレンジ</div>
+        <div class="article-title">ラテ・カプチーノ・カフェモカ ― 家でカフェ気分を楽しむ</div>
+        <div class="article-excerpt">エスプレッソとミルクの比率で変わる多彩なカフェドリンク。フォームミルクの作り方から各レシピまで一挙紹介。</div>
+        <span class="read-more">続きを読む →</span>
+      </a>
+
+    </div>
+
+    <div class="foot">
+      <a href="/coffee/">コーヒーの部屋</a>
+      <span class="divider">|</span>
+      <a href="/tea/">紅茶の部屋</a>
+      <span class="divider">|</span>
+      <a href="/">めざまし時計</a>
+    </div>
+
+  </div>
+</body>
+</html>
