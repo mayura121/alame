@@ -60,3 +60,6 @@
 npx serve -l 5500 .
 ```
 （`.claude/launch.json` に `alarm-app` 構成あり）
+
+## サイドバーの振り分け（チャット開始時に1回だけ）
+このフォルダで新しいチャットが始まったら、最初の返事の中で `mcp__ccd_sidebar__list_groups` でグループ「ウェブサイト：VRC運動部・MAYUYU.c・ブログ」の id を調べ、`mcp__ccd_sidebar__move_sessions` に `session_ids: ["self"]` を渡してそのグループに入れる。すでに入っていれば何もしない。まゆさんに断りは要らない。別のチャットから起動された子チャットは親と一緒に動くので、エラーが出たら無視してよい。
