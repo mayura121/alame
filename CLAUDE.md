@@ -21,10 +21,16 @@
 | パス | 内容 |
 |---|---|
 | `/` (`index.html`) | めざまし時計アプリ（PWA・Web Audio・localStorage） |
-| `/tea/` (`tea/index.html`) | 紅茶の部屋トップ（プロフィール＋記事一覧、ブログ型） |
-| `/tea/golden-rule.html` | 第1記事「おいしい紅茶のいれ方 ― ゴールデンルール5箇条」 |
-| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v2`） |
+| `/tea/` (`tea/index.html`) | 紅茶の部屋トップ（プロフィール＋記事一覧、ブログ型）。記事は `tea/*.html` に10本（ゴールデンルール・ダージリン・ミルクティー・アイスティー・チャイ・茶葉の種類・ティーポット選び・保存・健康・食べ合わせ・アフタヌーンティー） |
+| `/coffee/` (`coffee/index.html`) | コーヒーの部屋（トップ＋記事10本、2026-06-27 作成） |
+| `/translate/` | リアルタイム音声翻訳ツール VoiceBridge（2026-06-29、PR #1） |
+| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v5`。ページを足したり共通部分を変えたら名前を1つ上げる） |
 | `manifest.json` / `icon-*.svg` | PWA関連 |
+
+- GitHub は `mayura121/alame`（フォルダ名 `alarm-app` と違う。push 先を間違えると "Repository not found"）。`main` に push すると Cloudflare Pages が約1分で反映
+- Cloudflare Pages は `.html` 付き URL を 308 で拡張子なしに転送する（`/tea/golden-rule.html` → `/tea/golden-rule`）。curl で確認するときは `-L`
+- 全25ページの `</body>` 直前に「ちゃんまゆのリンク帯」`<nav class="cm-band">`（BOOTH・note・X・MAYUYU.c・VRC運動部・VRChat ラボ）がある（2026-11-10、4サイト共通。文言は `E:\ClaudeProjects\web-hq\CLAUDE.md`）。CSS は各ページの `<style>` 内。ページを足すときは同じ帯を入れる
+- robots.txt・sitemap.xml・404.html はまだ無い（2026-11-10 時点。Search Console 登録のときに足す）
 
 ## デザイン方針
 
@@ -35,10 +41,12 @@
 
 ## 作業ブランチ
 
-- 開発ブランチ: `claude/remote-control-vc73na`
-- ⚠️ 本番（main）にはまだマージしていない。`alame.pages.dev/tea/` はデプロイ後に公開される
+- 2026-11-06 に開発ブランチ `claude/remote-control-vc73na` を `main` にマージ（`bcb5848`）し、紅茶の部屋・コーヒーの部屋を本番公開済み。以後は `main` で作業する
+- リモートに古いブランチ `claude/avatar-translation-system-kcwzsf`（6-29、STATUS/SUMMON の文書だけ）が残っている。main より古いので使わない（削除はまゆさんに確認）
+- 記事の変更・追加は本社（`E:\ClaudeProjects\ai-company`）に相談してから。解説動画（YouTube「まゆゆ軍団」）の誘導先がこのサイト
+- 親: ウェブサイト司令塔（決まりは `E:\ClaudeProjects\web-hq\CLAUDE.md`）
 
-## これまでの進行状況（〜2026-06-26）
+## これまでの進行状況（〜2026-06-26。歴史として残す）
 
 - [x] 紅茶の部屋トップページ作成（`/tea/`）
 - [x] 第1記事「ゴールデンルール5箇条」執筆・作成
