@@ -1,4 +1,4 @@
-const CACHE = 'mezamashi-v5';
+const CACHE = 'mezamashi-v6';
 const ASSETS = [
   '/', '/index.html', '/manifest.json', '/icon-192.svg', '/icon-512.svg',
   '/tea/', '/tea/golden-rule.html',

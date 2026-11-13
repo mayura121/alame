@@ -24,12 +24,12 @@
 | `/tea/` (`tea/index.html`) | 紅茶の部屋トップ（プロフィール＋記事一覧、ブログ型）。記事は `tea/*.html` に10本（ゴールデンルール・ダージリン・ミルクティー・アイスティー・チャイ・茶葉の種類・ティーポット選び・保存・健康・食べ合わせ・アフタヌーンティー） |
 | `/coffee/` (`coffee/index.html`) | コーヒーの部屋（トップ＋記事10本、2026-06-27 作成） |
 | `/translate/` | リアルタイム音声翻訳ツール VoiceBridge（2026-06-29、PR #1） |
-| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v5`。ページを足したり共通部分を変えたら名前を1つ上げる） |
+| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v6`。ページを足したり共通部分を変えたら名前を1つ上げる） |
 | `manifest.json` / `icon-*.svg` | PWA関連 |
 
 - GitHub は `mayura121/alame`（フォルダ名 `alarm-app` と違う。push 先を間違えると "Repository not found"）。`main` に push すると Cloudflare Pages が約1分で反映
 - Cloudflare Pages は `.html` 付き URL を 308 で拡張子なしに転送する（`/tea/golden-rule.html` → `/tea/golden-rule`）。curl で確認するときは `-L`
-- 全25ページの `</body>` 直前に「ちゃんまゆのリンク帯」`<nav class="cm-band">`（BOOTH・note・X・MAYUYU.c・VRC運動部・VRChat ラボ）がある（2026-11-10、4サイト共通。文言は `E:\ClaudeProjects\web-hq\CLAUDE.md`）。CSS は各ページの `<style>` 内。ページを足すときは同じ帯を入れる
+- 全25ページの `</body>` 直前に「ちゃんまゆのリンク帯」`<nav class="cm-band">`（BOOTH・note・X・MAYUYU.c・VRC運動部・VRChat ラボ）がある（2026-11-10、4サイト共通。X は工房の @ChanmayuKobo、2026-11-13 にまゆさんの指示で個人 @mayura0121 から変更。文言は `E:\ClaudeProjects\web-hq\CLAUDE.md`）。CSS は各ページの `<style>` 内。ページを足すときは同じ帯を入れる
 - robots.txt・sitemap.xml・404.html はまだ無い（2026-11-10 時点。Search Console 登録のときに足す）
 
 ## デザイン方針
