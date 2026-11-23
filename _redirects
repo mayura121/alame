@@ -1,0 +1,7 @@
+# 内部メモを外から読めないようにする（ビルド無しのためリポジトリ全体が公開される）
+# 公開したくないファイルを足したら、ここにも行を足す
+/CLAUDE.md / 302
+/.gitignore / 302
+/.claude/* / 302
+/tools/* / 302
+/translate/README.md /translate/ 302

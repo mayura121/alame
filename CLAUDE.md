@@ -30,8 +30,8 @@
 - GitHub は `mayura121/alame`（フォルダ名 `alarm-app` と違う。push 先を間違えると "Repository not found"）。`main` に push すると Cloudflare Pages が約1分で反映
 - Cloudflare Pages は `.html` 付き URL を 308 で拡張子なしに転送する（`/tea/golden-rule.html` → `/tea/golden-rule`）。curl で確認するときは `-L`
 - 全25ページの `</body>` 直前に「ちゃんまゆのリンク帯」`<nav class="cm-band">`（BOOTH・note・X・MAYUYU.c・VRC運動部・VRChat ラボ）がある（2026-11-10、4サイト共通。X は工房の @ChanmayuKobo、2026-11-13 にまゆさんの指示で個人 @mayura0121 から変更。文言は `E:\ClaudeProjects\web-hq\CLAUDE.md`）。CSS は各ページの `<style>` 内。ページを足すときは同じ帯を入れる
-- robots.txt・sitemap.xml（28 URL、拡張子なし）・404.html は 2026-11-23 に足した。ページを足したら sitemap.xml にも足す。canonical と og:url は拡張子なしにそろえた。`ogp.png`（紅茶）・`ogp-coffee.png`（コーヒー）も同日に作った（前は画像が無いのに参照だけあった）。Search Console は未登録（まゆさんの Google ログインが要る）
-- **このリポジトリの中身は全部が公開される**（ビルド無しの Pages。`/CLAUDE.md` も本番で 200）。外に出したくない文書は `docs/` に置く（`.gitignore` 済みで push されない。この PC にだけある）
+- robots.txt・sitemap.xml（28 URL、拡張子なし）・404.html は 2026-11-23 に足した。ページを足したら sitemap.xml にも足す。canonical と og:url は拡張子なしにそろえた。`ogp.png`（紅茶）・`ogp-coffee.png`（コーヒー）も同日に作った（前は画像が無いのに参照だけあった）。Search Console の確認用ファイル `google86afd82062e50fd5.html` を直下に置いた（消さない）
+- **このリポジトリの中身は全部が公開される**（ビルド無しの Pages）。内部メモ（`CLAUDE.md`・`.claude/`・`.gitignore`・`tools/`・`translate/README.md`）は直下の `_redirects` で 302 にして隠してある（2026-11-23、司令塔の案）。公開したくないファイルを足したら `_redirects` にも足す。外に出したくない文書は `docs/` に置く（`.gitignore` 済みで push されない。この PC にだけある）
 - **アフィリエイト（2026-11-23 開始、本社の依頼）**: 計画 `docs/紅茶アフィリエイト計画_2026-11-23.md`・`.png`、手順 `docs/申し込み手順_alame_2026-11-23.png`（作る道具 `docs/make_tea_affiliate_images.py`）。柱は もしも経由の楽天（食品 4%・キッチン用品 3%・家電 2%、1個の上限 1,000円）と、通れば Amazon。紅茶の専門店・メーカーの案件は公開ページでは見つからず。申し込みは VRChat ラボと同じアカウントに alame を足す形（進み具合は `E:\ClaudeProjectsrchat-blog\CLAUDE.md`）。**まだ申し込み前なので、記事の商品枠（`SHOP()`＝`.shop-box`）は公式サイトへの普通のリンク**。通ったら `tools/make_tea_articles.py` の `AFFILIATE = True` とリンクの差し替えで、PR 表記と `rel="sponsored"` が入る。開示ページ `/tea/about-ads` はその時に作る。記事に まゆさん本人の感想を足すときは本人の言葉をもらってから（作らない）。健康の効き目・「最安」などは書かない
 
 ## デザイン方針
@@ -73,3 +73,5 @@ npx serve -l 5500 .
 
 ## サイドバーの振り分け（チャット開始時に1回だけ）
 このフォルダで新しいチャットが始まったら、最初の返事の中で `mcp__ccd_sidebar__list_groups` でグループ「ウェブサイト：VRC運動部・MAYUYU.c・ブログ」の id を調べ、`mcp__ccd_sidebar__move_sessions` に `session_ids: ["self"]` を渡してそのグループに入れる。すでに入っていれば何もしない。まゆさんに断りは要らない。別のチャットから起動された子チャットは親と一緒に動くので、エラーが出たら無視してよい。
+
+- **名前の決まり（2026-11-23 まゆさん「alameって変じゃね」→ 案1）**: URL は `alame.pages.dev` のまま。外に出す名前（ASP のメディア名・画像・ページの題）に「alame」は使わず「紅茶の部屋」と書く。
