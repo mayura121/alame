@@ -1,10 +1,11 @@
-const CACHE = 'mezamashi-v6';
+const CACHE = 'mezamashi-v7';
 const ASSETS = [
   '/', '/index.html', '/manifest.json', '/icon-192.svg', '/icon-512.svg',
   '/tea/', '/tea/golden-rule.html',
   '/tea/darjeeling.html', '/tea/milk-tea.html', '/tea/iced-tea.html',
   '/tea/tea-leaves-type.html', '/tea/teapot-choice.html', '/tea/afternoon-tea.html',
   '/tea/chai.html', '/tea/storage.html', '/tea/health.html', '/tea/food-pairing.html',
+  '/tea/starter-tools.html', '/tea/teabag-vs-leaf.html', '/tea/gift.html',
   '/coffee/', '/coffee/drip.html', '/coffee/camp-percolator.html',
   '/coffee/camp-drip.html', '/coffee/moka-pot.html', '/coffee/french-press.html',
   '/coffee/coffee-maker.html', '/coffee/beans.html', '/coffee/roast.html',
