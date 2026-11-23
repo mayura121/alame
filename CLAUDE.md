@@ -21,16 +21,18 @@
 | パス | 内容 |
 |---|---|
 | `/` (`index.html`) | めざまし時計アプリ（PWA・Web Audio・localStorage） |
-| `/tea/` (`tea/index.html`) | 紅茶の部屋トップ（プロフィール＋記事一覧、ブログ型）。記事は `tea/*.html` に10本（ゴールデンルール・ダージリン・ミルクティー・アイスティー・チャイ・茶葉の種類・ティーポット選び・保存・健康・食べ合わせ・アフタヌーンティー） |
+| `/tea/` (`tea/index.html`) | 紅茶の部屋トップ（プロフィール＋記事一覧、ブログ型）。記事は `tea/*.html` に13本（6月の10本＋2026-11-23 の「買う前」むけ3本: `starter-tools`・`teabag-vs-leaf`・`gift`。この3本は `tools/make_tea_articles.py` から書き出す。直すときは道具の方を直して `python tools/make_tea_articles.py`） |
 | `/coffee/` (`coffee/index.html`) | コーヒーの部屋（トップ＋記事10本、2026-06-27 作成） |
 | `/translate/` | リアルタイム音声翻訳ツール VoiceBridge（2026-06-29、PR #1） |
-| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v6`。ページを足したり共通部分を変えたら名前を1つ上げる） |
+| `sw.js` | Service Worker（キャッシュ。現在 `mezamashi-v7`。ページを足したり共通部分を変えたら名前を1つ上げる） |
 | `manifest.json` / `icon-*.svg` | PWA関連 |
 
 - GitHub は `mayura121/alame`（フォルダ名 `alarm-app` と違う。push 先を間違えると "Repository not found"）。`main` に push すると Cloudflare Pages が約1分で反映
 - Cloudflare Pages は `.html` 付き URL を 308 で拡張子なしに転送する（`/tea/golden-rule.html` → `/tea/golden-rule`）。curl で確認するときは `-L`
 - 全25ページの `</body>` 直前に「ちゃんまゆのリンク帯」`<nav class="cm-band">`（BOOTH・note・X・MAYUYU.c・VRC運動部・VRChat ラボ）がある（2026-11-10、4サイト共通。X は工房の @ChanmayuKobo、2026-11-13 にまゆさんの指示で個人 @mayura0121 から変更。文言は `E:\ClaudeProjects\web-hq\CLAUDE.md`）。CSS は各ページの `<style>` 内。ページを足すときは同じ帯を入れる
-- robots.txt・sitemap.xml・404.html はまだ無い（2026-11-10 時点。Search Console 登録のときに足す）
+- robots.txt・sitemap.xml（28 URL、拡張子なし）・404.html は 2026-11-23 に足した。ページを足したら sitemap.xml にも足す。canonical と og:url は拡張子なしにそろえた。`ogp.png`（紅茶）・`ogp-coffee.png`（コーヒー）も同日に作った（前は画像が無いのに参照だけあった）。Search Console は未登録（まゆさんの Google ログインが要る）
+- **このリポジトリの中身は全部が公開される**（ビルド無しの Pages。`/CLAUDE.md` も本番で 200）。外に出したくない文書は `docs/` に置く（`.gitignore` 済みで push されない。この PC にだけある）
+- **アフィリエイト（2026-11-23 開始、本社の依頼）**: 計画 `docs/紅茶アフィリエイト計画_2026-11-23.md`・`.png`、手順 `docs/申し込み手順_alame_2026-11-23.png`（作る道具 `docs/make_tea_affiliate_images.py`）。柱は もしも経由の楽天（食品 4%・キッチン用品 3%・家電 2%、1個の上限 1,000円）と、通れば Amazon。紅茶の専門店・メーカーの案件は公開ページでは見つからず。申し込みは VRChat ラボと同じアカウントに alame を足す形（進み具合は `E:\ClaudeProjectsrchat-blog\CLAUDE.md`）。**まだ申し込み前なので、記事の商品枠（`SHOP()`＝`.shop-box`）は公式サイトへの普通のリンク**。通ったら `tools/make_tea_articles.py` の `AFFILIATE = True` とリンクの差し替えで、PR 表記と `rel="sponsored"` が入る。開示ページ `/tea/about-ads` はその時に作る。記事に まゆさん本人の感想を足すときは本人の言葉をもらってから（作らない）。健康の効き目・「最安」などは書かない
 
 ## デザイン方針
 
